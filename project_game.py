@@ -111,6 +111,7 @@ def play():
     print_board(board_list)
     game_on()
 
+
 play()
 
 
