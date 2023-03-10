@@ -2,11 +2,11 @@ import random
 
 
 def p_red(obj):
-    return "\033[91m {}\033[00m" .format(obj)
+    return "\033[91m{}\033[00m".format(obj)
 
 
 def p_green(obj):
-    return "\033[92m {}\033[00m" .format(obj)
+    return "\033[92m{}\033[00m".format(obj)
 
 
 print('\n'*48)
@@ -17,6 +17,7 @@ def play():
     board_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
 
     def print_board(board):
+        print(('  ---  ---  --- \n| {} | {} | {} | \n  ---  ---  --- \n| {} | {} | {} | \n').format(board[0],board[1], board[2],board[3],board[4], board[5]))
         print(' --- --- ---')
         print('| ' + board[0] + ' | ' + board[1] + ' | ' + board[2]+ ' | ')
         print(' --- --- ---')
@@ -93,9 +94,11 @@ def play():
             else:
                 board_list[position_index] = p_green(your_sign)
                 free_indexes_tracker.pop(free_indexes_tracker.index(position_index))  # removing position from the list
-                random_position_from_tracker = random.choice(free_indexes_tracker)  # picking a random position for opponent
+                random_position_from_tracker = random.choice(free_indexes_tracker)  # picking a random position
+                # for opponent
                 board_list[random_position_from_tracker] = p_red(opponent_sign)
                 free_indexes_tracker.pop(free_indexes_tracker.index(random_position_from_tracker))
+                print('\n'*100)
                 print_board(board_list)
 
                 if len(free_indexes_tracker) <= 4:
